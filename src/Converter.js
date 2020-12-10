@@ -15,19 +15,20 @@ function Converter(props) {
       }
 
     return (
-        <div>{header}
+        <div>
+            <div className="header">{header}</div>
         
-        <Amount
-          onChangeAmount={handleAmount}
-          amount={amount}
-          name="Euro"
+            <Amount
+            onChangeAmount={handleAmount}
+            amount={amount}
+            name="Euro"
 
-        />          
-        <div className="equals">=</div>        
-        <Amount
-          amount={amount * exchangeRate}
-          name={currency}
-          />
+            />          
+            <div className="equals">=</div>        
+            <Amount
+            amount={amount * exchangeRate}
+            name={currency}
+            />
         </div>
     )
 }

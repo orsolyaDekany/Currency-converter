@@ -16,6 +16,8 @@ function App() {
     setAmount(e.target.value)
   }
 
+  //adding the empty array as a second parameter, means that your effect does not depend on any parameter, and so it should only be called once.
+
   useEffect(() => {   
     const timer = setTimeout(() => {
         setAmount(0)
@@ -33,20 +35,20 @@ function App() {
           <option value="dark">Dark</option>
           <option value="light">Light</option>
         </select>
-       <h1>Convert</h1>       
+        <div className="converter-container">
+
        <Converter
           header={<h1>Bitcoin converter</h1>}
           onChangeAmount={handleAmount}
           exchangeRate={0.5}
           currency="$BTC"
-
         />          
-        <div className="equals">=</div>        
         <Converter
           header={<h1>Etherium converter</h1>}
           exchangeRate={1.2}
           currency="$ETH"
           />
+      </div>
       </div>
     </ThemeContext.Provider>
   );
