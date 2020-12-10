@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Amount from './Amount'
+import Converter from './Converter';
 import ThemeContext from './ThemeContext';
 
 
@@ -20,7 +20,7 @@ function App() {
         setAmount(0)
     }, 5000);
       return () => clearTimeout(timer);
-  }, []);          
+  }, [amount]);          
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -33,16 +33,18 @@ function App() {
           <option value="light">Light</option>
         </select>
        <h1>Convert</h1>       
-       <Amount
+       <Converter
+          header={<h1>Bitcoin converter</h1>}
           onChangeAmount={handleAmount}
           amount={amount}
-          name="Euro"
+          currency="$BTC"
 
         />          
         <div className="equals">=</div>        
-        <Amount
+        <Converter
+          header={<h1>Etherium converter</h1>}
           amount={amount * (Math.random() * 10000)}
-          name="$BTC"
+          currency="$ETH"
           />
       </div>
     </ThemeContext.Provider>
