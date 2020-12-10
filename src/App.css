@@ -1,5 +1,6 @@
 body {
   margin:0;
+  font:400 13.3333px Arial;
 }
 
 h1 {
@@ -39,4 +40,8 @@ select {
 .app.dark select {
   background: #2e2e2e;
   color: #efefef;
+}
+
+.currency {
+  padding-left: 10px;
 }

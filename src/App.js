@@ -36,11 +36,14 @@ function App() {
        <Amount
           onChangeAmount={handleAmount}
           amount={amount}
+          name="Euro"
+
         />          
         <div className="equals">=</div>        
         <Amount
           amount={amount * (Math.random() * 10000)}
-        />
+          name="$BTC"
+          />
       </div>
     </ThemeContext.Provider>
   );
