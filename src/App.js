@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Amount from './Amount'
+import ThemeContext from './ThemeContext';
+
 
 function App() {
+  const [amount, setAmount] = useState(0)
+  const [theme, setTheme] = useState('light')
+  
+  /*function exchangeRate() {
+  return Math.random() * 10000;
+}*/
+  const handleAmount = (e) => {
+    setAmount(e.target.value)
+  }
+
+  useEffect(() => {   
+    const timer = setTimeout(() => {
+        setAmount(0)
+    }, 5000);
+      return () => clearTimeout(timer);
+  }, []);          
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <div className={`app ${theme}`}>
+        <select
+           onChange={event => setTheme(event.target.value)}
+           value={theme}
+           >
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
+       <h1>Convert</h1>       
+       <Amount
+          onChangeAmount={handleAmount}
+          amount={amount}
+        />          
+        <div className="equals">=</div>        
+        <Amount
+          amount={amount * (Math.random() * 10000)}
+        />
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
