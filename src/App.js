@@ -8,9 +8,10 @@ function App() {
   const [amount, setAmount] = useState(0)
   const [theme, setTheme] = useState('light')
   
-  /*function exchangeRate() {
+  const exchangeRate = () => {
   return Math.random() * 10000;
-}*/
+}
+
   const handleAmount = (e) => {
     setAmount(e.target.value)
   }
@@ -36,14 +37,14 @@ function App() {
        <Converter
           header={<h1>Bitcoin converter</h1>}
           onChangeAmount={handleAmount}
-          amount={amount}
+          exchangeRate={0.5}
           currency="$BTC"
 
         />          
         <div className="equals">=</div>        
         <Converter
           header={<h1>Etherium converter</h1>}
-          amount={amount * (Math.random() * 10000)}
+          exchangeRate={1.2}
           currency="$ETH"
           />
       </div>

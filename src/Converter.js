@@ -4,7 +4,8 @@ import Amount from './Amount';
 function Converter(props) {
     const {
         header,
-        currency,    
+        currency,
+        exchangeRate
       } = props
 
     const [amount, setAmount] = useState(0)
@@ -24,7 +25,7 @@ function Converter(props) {
         />          
         <div className="equals">=</div>        
         <Amount
-          amount={amount * (Math.random() * 10000)}
+          amount={amount * exchangeRate}
           name={currency}
           />
         </div>
