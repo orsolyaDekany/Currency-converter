@@ -12,15 +12,6 @@ function App() {
   return Math.random() * 10000;
 }
 
-  //adding the empty array as a second parameter, means that your effect does not depend on any parameter, and so it should only be called once.
-
-
-  /*function count () {
-    count++
-    if (count = 5)
-    alert("alert");
-  }*/
-
   const onConversion = () => {
     setConversions(prevState => {
       return prevState.conversions + 1
