@@ -5,25 +5,43 @@ import ThemeContext from './ThemeContext';
 
 
 function App() {
-  const [amount, setAmount] = useState(0)
+  const [conversions, setConversions] = useState(0)
   const [theme, setTheme] = useState('light')
   
   const exchangeRate = () => {
   return Math.random() * 10000;
 }
 
-  const handleAmount = (e) => {
-    setAmount(e.target.value)
-  }
-
   //adding the empty array as a second parameter, means that your effect does not depend on any parameter, and so it should only be called once.
 
+
+  /*function count () {
+    count++
+    if (count = 5)
+    alert("alert");
+  }*/
+
+  const onConversion = () => {
+    setConversions(prevState => {
+      return prevState.conversions + 1
+    })
+  }
+
+  const limit = 5;
   useEffect(() => {   
+
+    if (conversions > limit) {
+      alert('Choose our premium package to become a member');
+      conversions(0);
+    }
+  })
+
+  /* useEffect(() => {   
     const timer = setTimeout(() => {
         setAmount(0)
     }, 5000);
       return () => clearTimeout(timer);
-  }, [amount]);          
+  }, [amount]);           */
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -35,20 +53,23 @@ function App() {
           <option value="dark">Dark</option>
           <option value="light">Light</option>
         </select>
+        
         <div className="converter-container">
 
        <Converter
           header={<h1>Bitcoin converter</h1>}
-          onChangeAmount={handleAmount}
-          exchangeRate={0.5}
+          onChangeAmount={onConversion}
+          exchangeRate={2}
           currency="$BTC"
         />          
         <Converter
-          header={<h1>Etherium converter</h1>}
+          header={<h1>Ethereum converter</h1>}
           exchangeRate={1.2}
           currency="$ETH"
+          onChangeAmount={onConversion}
+
           />
-      </div>
+        </div>
       </div>
     </ThemeContext.Provider>
   );
